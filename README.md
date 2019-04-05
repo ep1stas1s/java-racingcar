@@ -3,7 +3,7 @@
 ## 1. 구현 목록
 ### 1.1. Car
 - move : random 값이 4 이상일 경우 전진 (3 이하는 정지)
-- make0to9RandomValue : 0~9 사이의 random 값 생성
+- makeRandomValue : random 값 생성
 - printPosition : 현재 Car의 position을 막대바('-')로 출력
 ### 1.2. RacingGame
 - runProgram : game 실행

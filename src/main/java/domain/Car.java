@@ -37,12 +37,19 @@ public class Car {
 	public int makeRandomValue() {
 		return (int)(Math.random() * MAX_RANDOM_VALUE);
 	}
+	
+	public boolean isMaxPosition(int maxPosition) {
+		if(position == maxPosition) {
+			return true;
+		}
+		return false;
+	}
 
 	/**
 	 * 현재 Car의 position을 막대바('-')로 출력
 	 */
 	public void printPosition() {
-		StringBuilder positionToHypen = new StringBuilder();
+		StringBuilder positionToHypen = new StringBuilder(name + " : ");
 		for (int i = 0; i < position; i++) {
 			positionToHypen.append("-");
 		}

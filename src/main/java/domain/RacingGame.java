@@ -15,7 +15,6 @@ public class RacingGame {
 
 	private List<Car> cars;
 	private int count;
-	private int maxPosition = 0;
 
 	public void runProgram() {
 		setUserName();
@@ -66,12 +65,7 @@ public class RacingGame {
 	private void moveCars() {
 		for (Car car : cars) {
 			car.move();
-			updateMaxPosition(car.getPosition());
 		}
-	}
-
-	private void updateMaxPosition(int position) {
-		maxPosition = Math.max(position, maxPosition);
 	}
 
 	private void printCurrentSituation() {
@@ -79,6 +73,12 @@ public class RacingGame {
 			car.printPosition();
 		}
 		System.out.println();
+	}
+
+	private int getMaxPosition() {
+		return cars.stream()
+			.reduce((prev, next) -> prev.getPosition() > next.getPosition() ? prev : next)
+			.get().getPosition();
 	}
 
 	public void printWinners() {
@@ -92,7 +92,7 @@ public class RacingGame {
 
 	private List<Car> findWinners() {
 		return cars.stream()
-			.filter(car -> car.getPosition() == maxPosition)
+			.filter(car -> car.isMaxPosition(getMaxPosition()))
 			.collect(Collectors.toList());
 	}
 }

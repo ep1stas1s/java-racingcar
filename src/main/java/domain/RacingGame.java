@@ -82,11 +82,12 @@ public class RacingGame {
 	}
 
 	public void printWinners() {
-		String result = "";
+		List<String> winners = new ArrayList<>();
 		for (Car car : findWinners()) {
-			result += car.getName() + ", ";
+			winners.add(car.getName());
 		}
-		System.out.println(result.substring(0, result.length() - 2) + "가 최종 우승했습니다.");
+		String result = String.join(", ", winners);
+		System.out.println(result + "가 최종 우승했습니다.");
 	}
 
 	private List<Car> findWinners() {

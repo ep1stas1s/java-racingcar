@@ -6,9 +6,11 @@ package domain;
  * @author ep1stas1s
  */
 public class Car {
+	private static final int LIMIT = 4;
+	private static final int MAX_RANDOM_VALUE = 9;
+	
 	private final String name;
 	private int position = 0;
-	private static final int LIMIT = 4;
 
 	public Car(String name) {
 		this.name = name;
@@ -26,24 +28,24 @@ public class Car {
 	 * random 값이 LIMIT(4) 이상일 경우 position이 1증가
 	 */
 	public void move() {
-		int random = make0to9RandomValue();
+		int random = makeRandomValue();
 		if (random >= LIMIT) {
 			position++;
 		}
 	}
 
-	public int make0to9RandomValue() {
-		return (int)(Math.random() * 9);
+	public int makeRandomValue() {
+		return (int)(Math.random() * MAX_RANDOM_VALUE);
 	}
 
 	/**
 	 * 현재 Car의 position을 막대바('-')로 출력
 	 */
 	public void printPosition() {
-		System.out.print(name + " : ");
+		StringBuilder positionToHypen = new StringBuilder();
 		for (int i = 0; i < position; i++) {
-			System.out.print("-");
+			positionToHypen.append("-");
 		}
-		System.out.println();
+		System.out.println(positionToHypen.toString());
 	}
 }
